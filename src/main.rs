@@ -3,9 +3,6 @@
 
 use core::panic::PanicInfo;
 
-/*
-Avoid standard library language item conflict when testing, as test brings in std anyway.
-*/
 #[panic_handler]
 // Never returns as it is called on a crash
 fn panic(_info: &PanicInfo) -> ! {
