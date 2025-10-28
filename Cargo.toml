@@ -1,0 +1,17 @@
+[package]
+name = "lux_os"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+
+[profile.dev]
+panic = "abort"
+
+[profile.release]
+panic = "abort"
+
+# don't care about test config flag when checking code with rust-analyzer
+[[bin]]
+name = "lux_os"
+test = false
