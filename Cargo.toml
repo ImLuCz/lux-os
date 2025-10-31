@@ -4,14 +4,10 @@ version = "0.1.0"
 edition = "2024"
 
 [dependencies]
-
-[profile.dev]
-panic = "abort"
-
-[profile.release]
-panic = "abort"
+bootloader = "0.9"
 
 # don't care about test config flag when checking code with rust-analyzer
 [[bin]]
 name = "lux_os"
 test = false
+bench = false
