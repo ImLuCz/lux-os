@@ -7,7 +7,8 @@ mod vga_buffer;
 
 #[panic_handler]
 // Never returns as it is called on a crash
-fn panic(_info: &PanicInfo) -> ! {
+fn panic(info: &PanicInfo) -> ! {
+    println!("{}", info);
     loop {}
 }
 
