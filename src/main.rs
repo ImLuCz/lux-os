@@ -43,14 +43,10 @@ TLDR _start = main
 */
 pub extern "C" fn _start() -> ! {
     println!("Hello, World{}", "!");
+    println!("Runninng code");
 
     #[cfg(test)]
     test_main();
 
     loop {}
-}
-
-#[test_case]
-fn trivial_assertion() {
-    assert_eq!(1, true as u8);
 }
