@@ -45,8 +45,11 @@ pub extern "C" fn _start() -> ! {
     println!("Hello, World{}", "!");
     lux_os::init();
 
-    // breakpoint exception, to be removed
-    x86_64::instructions::interrupts::int3();
+    fn stack_overflow() {
+        stack_overflow();
+    }
+
+    stack_overflow();
 
     #[cfg(test)]
     test_main();
