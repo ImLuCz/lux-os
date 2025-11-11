@@ -1,3 +1,4 @@
+#![feature(abi_x86_interrupt)]
 #![no_std]
 #![cfg_attr(test, no_main)]
 #![feature(custom_test_frameworks)]
@@ -6,6 +7,7 @@
 
 use core::panic::PanicInfo;
 
+pub mod interrupts;
 pub mod serial;
 pub mod vga_buffer;
 
@@ -40,10 +42,16 @@ pub fn test_panic_handler(info: &PanicInfo) -> ! {
     loop {}
 }
 
+/// Initialization routines
+pub fn init() {
+    interrupts::init_idt(); // handle cpu exceptions
+}
+
 /// Entry point for `cargo test`
 #[cfg(test)]
 #[unsafe(no_mangle)]
 pub extern "C" fn _start() -> ! {
+    init();
     test_main();
     loop {}
 }

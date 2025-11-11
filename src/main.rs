@@ -43,10 +43,14 @@ TLDR _start = main
 */
 pub extern "C" fn _start() -> ! {
     println!("Hello, World{}", "!");
-    println!("Runninng code");
+    lux_os::init();
+
+    // breakpoint exception, to be removed
+    x86_64::instructions::interrupts::int3();
 
     #[cfg(test)]
     test_main();
 
+    println!("didn't crash");
     loop {}
 }
