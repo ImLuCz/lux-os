@@ -13,7 +13,7 @@ mod vga_buffer;
 #[panic_handler]
 fn panic(info: &PanicInfo) -> ! {
     println!("{}", info);
-    loop {}
+    lux_os::hlt_loop();
 }
 
 #[cfg(test)] // print test output to host console
@@ -49,5 +49,5 @@ pub extern "C" fn _start() -> ! {
     test_main();
 
     println!("didn't crash");
-    loop {}
+    lux_os::hlt_loop();
 }
